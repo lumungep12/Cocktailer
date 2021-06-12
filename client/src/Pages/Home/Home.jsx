@@ -1,7 +1,11 @@
 import { useState } from "react";
+import {useHistory} from 'react-router-dom';
 import { Paper, Button, Typography, Grid } from "@material-ui/core";
 import FormInput from "./FormInput";
 import useStyles from './styles';
+// redux
+import {useDispatch} from 'react-redux';
+import {signup, signin} from '../../Actions/Auth';
 
 const formInitialState = {firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 
@@ -10,8 +14,15 @@ const Home = () => {
     const [formData, setFormData] = useState(formInitialState);
     const [showPassword, setShowPassword] = useState(false);
 
+	const dispatch = useDispatch();
+	const history = useHistory();
+
     // styles
     const styles = useStyles();
+
+	const switcher = () => {
+		setIsSignUp(!isSignUp);
+	};
 
 	const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -19,12 +30,15 @@ const Home = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if(isSignUp){
+			dispatch(signup(formData, history));
+		}else{
+			dispatch(signin(formData, history));
+		}
 		console.log(formData);
 	};
 
-	const switcher = () => {
-		setIsSignUp(!isSignUp);
-	};
+	
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -78,7 +92,7 @@ const Home = () => {
 						)}
 					</Grid>
                     <>
-					<Button type="submit" variant="contained" color="primary"  onClick={switcher}>
+					<Button type="submit" variant="contained" color="primary">
 						{isSignUp ? "SignUp" : "SignIn"}
 					</Button>
                     <Button className={styles.google} type="reset" variant="contained" color="secondary">
