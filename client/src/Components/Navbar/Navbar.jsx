@@ -44,7 +44,7 @@ const Navbar = () => {
 				<Button component={Link} to="/about">
 					About
 				</Button>
-				<Button component={Link} to="/recipes">
+				<Button component={Link} to="/categories">
 					Categories
 				</Button>
                 {user ? (

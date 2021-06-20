@@ -12,14 +12,10 @@ import {
 	Collapse,
 	Grid,
     ListItem,
-    Avatar,
-    ListItemAvatar,
-    ListItemText
 } from "@material-ui/core";
 import Like from "@material-ui/icons/Favorite";
 import Share from "@material-ui/icons/Share";
 import Expand from "@material-ui/icons/ExpandMore";
-import Scatter from '@material-ui/icons/ScatterPlot';
 import useStyles from "./styles";
 
 const Recipe = (props) => {
