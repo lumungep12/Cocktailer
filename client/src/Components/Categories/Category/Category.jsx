@@ -3,9 +3,13 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import {Container, Grid, Typography, Card, CardActionArea, CardMedia, CardActions, Button } from '@material-ui/core';
 import useStyles from './styles';
+import Auth from "../../../Pages/Home/Auth";
 
 
 const Category = (props) => {
+	const [user, setUser] = useState(
+		JSON.parse(localStorage.getItem("profile"))
+	);
     const [meals, setMeals] = useState([]);
 
 	const path = props.location.pathname;
@@ -28,6 +32,8 @@ const Category = (props) => {
 	}, []);
 
 	return (
+		<>
+		{user ? (
 		<Container>
 			<Typography variant="h4" className={classes.title}>
 					** Recipies
@@ -63,6 +69,10 @@ const Category = (props) => {
             ))}
 			</Grid>
 		</Container>
+		) : (
+			<Auth/>
+		)}
+		</>
 	);
 };
 

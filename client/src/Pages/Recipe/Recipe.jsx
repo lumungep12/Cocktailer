@@ -12,15 +12,23 @@ import {
 	Collapse,
 	Grid,
     ListItem,
+    Box, 
+    LinearProgress
 } from "@material-ui/core";
 import Like from "@material-ui/icons/Favorite";
 import Share from "@material-ui/icons/Share";
 import Expand from "@material-ui/icons/ExpandMore";
 import useStyles from "./styles";
+import Auth from "../Home/Auth";
 
 const Recipe = (props) => {
+    const [user, setUser] = useState(
+		JSON.parse(localStorage.getItem("profile"))
+	);
 	const [meals, setMeals] = useState([]);
 	const [meal, setMeal] = useState([]);
+    const [loading, setLoading] = useState(false);
+	const [progress, setProgress] = useState(10);
 	const [expanded, setExpanded] = useState(false);
 
 	const path = props.location.pathname;
@@ -47,6 +55,30 @@ const Recipe = (props) => {
 			});
 	}, []);
 
+    useEffect(() => {
+		const timer = setInterval(() => {
+			setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10))
+		}, 800);
+		return () => {
+			clearInterval(timer);
+		}
+	}, []);
+
+	const LinearProgressWithLabel = (props) => {
+		return(
+			<Box display="flex" alignItems="center">
+				<Box width="100%" mr={1}>
+					<LinearProgress variant="determinate" {...props}/>
+					</Box>
+					<Box minWidth={35}>
+						<Typography variant="body2" color="textSecondary">
+							{`${Math.round(props.value)}%`}
+						</Typography>
+					</Box>
+			</Box>
+		)
+	}
+
 	// getting all ingredients
 	const ingredients = [];
 	for (let i = 1; i <= 20; i++) {
@@ -60,6 +92,8 @@ const Recipe = (props) => {
 	}
 
 	return (
+        <>
+        {user ? (
 		<Container className={classes.main}>
 			{meals.map((meal) => (
 				<div key={meal.idMeal}>
@@ -131,8 +165,12 @@ const Recipe = (props) => {
 							></iframe>
 					</div>
 				</div>
-			))}
+			))}           
 		</Container>
+        ) : (
+            <Auth/>
+        )}
+        </>
 	);
 };
 

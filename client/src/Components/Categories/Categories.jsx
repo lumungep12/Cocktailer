@@ -14,6 +14,7 @@ import {
 	LinearProgress,
 } from "@material-ui/core";
 import useStyles from "./styles";
+import Auth from "../../Pages/Home/Auth";
 
 const Categories = () => {
 
@@ -114,7 +115,7 @@ const Categories = () => {
 
 			</Container>
 			) : (
-				<Button component={Link} to="/auth">Login</Button>
+				<Auth/>
 			)}
 			</>
 	);
