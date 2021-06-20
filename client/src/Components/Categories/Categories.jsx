@@ -67,6 +67,8 @@ const Categories = () => {
 	}
 
 	return (
+		<>
+		{user ? (
 			<Container>
 				<Typography variant="h4" className={classes.title}>
 					Our Categories
@@ -111,6 +113,10 @@ const Categories = () => {
 				)}
 
 			</Container>
+			) : (
+				<Button component={Link} to="/auth">Login</Button>
+			)}
+			</>
 	);
 };
 

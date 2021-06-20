@@ -17,7 +17,7 @@ const formInitialState = {
 	confirmPassword: "",
 };
 
-const Home = () => {
+const Auth = () => {
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [formData, setFormData] = useState(formInitialState);
 	const [showPassword, setShowPassword] = useState(false);
@@ -57,7 +57,7 @@ const Home = () => {
 
 		try {
 			dispatch({ type: "AUTH", data: { result, token } });
-			history.push("/recipes");
+			history.push("/categories");
 		} catch (error) {
 			console.log(error);
 		}
@@ -160,4 +160,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Auth;
