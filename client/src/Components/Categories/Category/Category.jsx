@@ -1,11 +1,17 @@
 import {useState, useEffect } from "react";
+import {Link} from 'react-router-dom';
 import axios from "axios";
+import {Container, Grid, Typography, Card, CardActionArea, CardMedia, CardActions, Button } from '@material-ui/core';
+import useStyles from './styles';
+
 
 const Category = (props) => {
     const [meals, setMeals] = useState([]);
 
 	const path = props.location.pathname;
 	const category = path.substr(11);
+
+	const classes = useStyles();
 
 	useEffect(() => {
 		axios
@@ -15,7 +21,6 @@ const Category = (props) => {
 			.then((res) => {
 				const { meals } = res.data;
                 setMeals(meals);
-				console.log(meals);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -23,12 +28,41 @@ const Category = (props) => {
 	}, []);
 
 	return (
-		<>
-			<h1>This is a single meal category</h1>
+		<Container>
+			<Typography variant="h4" className={classes.title}>
+					** Recipies
+				</Typography>
+			<Grid container spacing={2}>
             {meals.map((single) => (
-                <p>{single.strMeal}</p>
+				<Grid item xs={12} sm={6} md={4}>
+				<Card key={single.idMeal}>
+					<CardActionArea>
+						<CardMedia
+							className={classes.image}
+							image={single.strMealThumb}
+							title={single.strMeal}
+						/>
+					</CardActionArea>
+					<CardActions className={classes.actions}>
+					<Typography variant="h6">
+								{single.strMeal}
+							</Typography>
+						<Button
+							variant="contained"
+							color="secondary"
+							component={Link}
+							to={{
+								pathname: `/recipe/:${single.idMeal}`,
+							}}
+						>
+							View Recipe
+						</Button>
+					</CardActions>
+				</Card>
+			</Grid>
             ))}
-		</>
+			</Grid>
+		</Container>
 	);
 };
 

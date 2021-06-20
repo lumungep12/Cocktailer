@@ -5,6 +5,7 @@ import About from "./Pages/About/About";
 import Recipes from "./Pages/Recipes/Recipes";
 import Navbar from "./Components/Navbar/Navbar";
 import Category from "./Components/Categories/Category/Category";
+import Recipe from "./Pages/Recipe/Recipe";
 
 const App = () => {
 	return (
@@ -16,6 +17,7 @@ const App = () => {
 					<Route path="/about" component={About} />
 					<Route path="/recipes" component={Recipes} />
 					<Route path="/category" component={Category} />
+					<Route path="/recipe" component={Recipe} />
 				</Switch>
 			</Container>
 		</BrowserRouter>

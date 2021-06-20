@@ -45,7 +45,7 @@ const Navbar = () => {
 					About
 				</Button>
 				<Button component={Link} to="/recipes">
-					Recipes
+					Categories
 				</Button>
                 {user ? (
                     <div className={styles.profile}>
