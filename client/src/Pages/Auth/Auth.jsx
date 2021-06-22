@@ -42,6 +42,7 @@ const Auth = () => {
 			dispatch(signup(formData, history));
 		} else {
 			dispatch(signin(formData, history));
+			history.push("/categories");
 		}
 		console.log(formData);
 	};
@@ -58,6 +59,7 @@ const Auth = () => {
 		try {
 			dispatch({ type: "AUTH", data: { result, token } });
 			history.push("/categories");
+			history.go(0)
 		} catch (error) {
 			console.log(error);
 		}

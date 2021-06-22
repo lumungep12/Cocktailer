@@ -20,7 +20,7 @@ const Navbar = () => {
 
 	const logout = () => {
 		dispatch({ type: "LOGOUT" });
-		history.push("/auth");
+		history.push("/");
 		setUser(null);
 	};
 
@@ -38,8 +38,8 @@ const Navbar = () => {
 		<AppBar position="static">
 			<Toolbar className={styles.toolbar}>
 				<div>
-					<Button>
-						Chief Chef
+					<Button component={Link} to="/">
+						Cocktales
 					</Button>
 				<Button component={Link} to="/about">
 					About

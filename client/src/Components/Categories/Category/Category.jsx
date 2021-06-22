@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import {Container, Grid, Typography, Card, CardActionArea, CardMedia, CardActions, Button } from '@material-ui/core';
 import useStyles from './styles';
-import Auth from "../../../Pages/Home/Auth";
+import Auth from "../../../Pages/Auth/Auth";
 
 
 const Category = (props) => {
@@ -13,18 +13,33 @@ const Category = (props) => {
     const [drinks, setDrinks] = useState([]);
 
 	const path = props.location.pathname;
-	const category = path.substr(11);
+	const param = path.substr(11);
 
 	const classes = useStyles();
 
+	// get by cayegory
 	useEffect(() => {
 		axios
 			.get(
-				`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+				`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${param}`
 			)
 			.then((res) => {
 				const {drinks}= res.data;
-				console.log(drinks);
+                setDrinks(drinks);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
+	// get by ingredient
+	useEffect(() => {
+		axios
+			.get(
+				`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${param}`
+			)
+			.then((res) => {
+				const {drinks}= res.data;
                 setDrinks(drinks);
 			})
 			.catch((error) => {
@@ -40,7 +55,7 @@ const Category = (props) => {
 					** Recipies
 				</Typography>
 			<Grid container spacing={2}>
-            {drinks.map((single) => (
+            {drinks?.map((single) => (
 				<Grid item xs={12} sm={6} md={4}>
 				<Card key={single.idMeal}>
 					<CardActionArea>

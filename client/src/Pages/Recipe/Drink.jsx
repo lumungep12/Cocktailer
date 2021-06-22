@@ -19,7 +19,7 @@ import Like from "@material-ui/icons/Favorite";
 import Share from "@material-ui/icons/Share";
 import Expand from "@material-ui/icons/ExpandMore";
 import useStyles from "./styles";
-import Auth from "../Home/Auth";
+import Auth from "../Auth/Auth";
 
 const Drink = (props) => {
     const [user, setUser] = useState(
@@ -48,7 +48,9 @@ const Drink = (props) => {
 			.then((res) => {
 				const {drinks} = res.data;
 				setDrinks(drinks);
-				console.log(drinks);
+				setdrink(drinks[0]);
+				setLoading(!loading);
+				// console.log(drinks);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -106,17 +108,17 @@ const Drink = (props) => {
 						<Grid item sm={6} xs={12} className={classes.ingredients}>
 							<Card>
                             <CardHeader
-                                title={`${drink.strTags} ${drink.strCategory}`}
+                                title={`${drink.strDrink}`}
                                 subheader={`Category: ${drink.strCategory}`}
                             />
                             <Typography variant="h5">
 								<ListItem>Ingredients: </ListItem>
                                 </Typography>
-									{/* {ingredients.map((ingredient) => (
+									{ingredients.map((ingredient) => (
 										<ListItem>
                                            {ingredient}
                                         </ListItem>
-									))} */}
+									))}
 							</Card>
 						</Grid>
 						<Grid item sm={6} xs={12} className={classes.drink}>

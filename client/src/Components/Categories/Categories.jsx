@@ -4,39 +4,49 @@ import { Link } from "react-router-dom";
 import {
 	Grid,
 	Button,
-	Card,
-	CardMedia,
 	Typography,
-	CardActions,
-	CardActionArea,
 	Container,
 	Box,
 	LinearProgress,
 	Paper,
 } from "@material-ui/core";
 import useStyles from "./styles";
-import Auth from "../../Pages/Home/Auth";
+import Auth from "../../Pages/Auth/Auth";
 
 const Categories = () => {
 
-	const [user, setUser] = useState(
+	const [user] = useState(
 		JSON.parse(localStorage.getItem("profile"))
 	);
 	const [drinks, setDrinks] = useState([]);
+	const [ingredients, setIngredients] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(10);
 	const classes = useStyles();
 
 
 
-	// get all meal categories
+	// get all drink by categories
 	useEffect(() => {
 		axios
 			.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
 			.then((res) => {
 				const {drinks} = res.data;
-				// console.log(drinks);
 				setDrinks(drinks);
+				setLoading(true);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
+	// get all drink by ingredients
+	useEffect(() => {
+		axios
+			.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
+			.then((res) => {
+				const {drinks} = res.data;
+				setIngredients(drinks);
 				setLoading(true);
 			})
 			.catch((error) => {
@@ -76,7 +86,8 @@ const Categories = () => {
 					Our Categories
 				</Typography>
 				{loading ? (
-				<Grid container spacing={2}>
+				<Container>
+				<Paper elevation={3}>
 					{drinks?.map((drink) => (
 						<Button
 							variant="contained"
@@ -89,7 +100,25 @@ const Categories = () => {
 							<p>{drink.strCategory}</p>
 						</Button>
 					))}
-				</Grid>
+				</Paper>
+				<br />
+				<Typography variant="h3">By Ingredients</Typography>
+				<br />
+				<Paper elevation={3}>
+				{ingredients?.map((drink) => (
+					<Button
+						variant="contained"
+						color="secondary"
+						component={Link}
+						to={{
+							pathname: `/category/:${drink.strIngredient1}`
+						}}
+					>
+						<p>{drink.strIngredient1}</p>
+					</Button>
+				))}
+			</Paper>
+			</Container>
 				) : (
 					<div>
 						<br /><br />
