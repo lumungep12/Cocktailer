@@ -12,6 +12,7 @@ import {
 	Container,
 	Box,
 	LinearProgress,
+	Paper,
 } from "@material-ui/core";
 import useStyles from "./styles";
 import Auth from "../../Pages/Home/Auth";
@@ -21,7 +22,7 @@ const Categories = () => {
 	const [user, setUser] = useState(
 		JSON.parse(localStorage.getItem("profile"))
 	);
-	const [categories, setCategories] = useState([]);
+	const [drinks, setDrinks] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(10);
 	const classes = useStyles();
@@ -31,12 +32,12 @@ const Categories = () => {
 	// get all meal categories
 	useEffect(() => {
 		axios
-			.get("https://www.themealdb.com/api/json/v1/1/categories.php")
+			.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
 			.then((res) => {
-				const allCategories = res.data.categories;
-				setCategories(allCategories);
-				setLoading(!loading);
-				console.log(allCategories);
+				const {drinks} = res.data;
+				// console.log(drinks);
+				setDrinks(drinks);
+				setLoading(true);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -76,34 +77,17 @@ const Categories = () => {
 				</Typography>
 				{loading ? (
 				<Grid container spacing={2}>
-					{categories?.map((category) => (
-						<Grid item xs={12} sm={6} md={4}>
-							<Card>
-								<CardActionArea>
-									<CardMedia
-										className={classes.image}
-										image={category.strCategoryThumb}
-										title={category.strCategoryDescription}
-									/>
-								</CardActionArea>
-								<CardActions className={classes.actions}>
-								<Typography variant="h5">
-											{category.strCategory}
-										</Typography>
-									<Button
-										variant="contained"
-										color="secondary"
-										component={Link}
-										to={{
-											pathname: `/category/:${category.strCategory}`,
-										}}
-										key={category.idCategory}
-									>
-										Menu
-									</Button>
-								</CardActions>
-							</Card>
-						</Grid>
+					{drinks?.map((drink) => (
+						<Button
+							variant="contained"
+							color="secondary"
+							component={Link}
+							to={{
+								pathname: `/category/:${drink.strCategory}`
+							}}
+						>
+							<p>{drink.strCategory}</p>
+						</Button>
 					))}
 				</Grid>
 				) : (

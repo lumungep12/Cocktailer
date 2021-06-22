@@ -21,18 +21,18 @@ import Expand from "@material-ui/icons/ExpandMore";
 import useStyles from "./styles";
 import Auth from "../Home/Auth";
 
-const Recipe = (props) => {
+const Drink = (props) => {
     const [user, setUser] = useState(
 		JSON.parse(localStorage.getItem("profile"))
 	);
-	const [meals, setMeals] = useState([]);
-	const [meal, setMeal] = useState([]);
+	const [drinks, setDrinks] = useState([]);
+	const [drink, setdrink] = useState([]);
     const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(10);
 	const [expanded, setExpanded] = useState(false);
 
 	const path = props.location.pathname;
-	const mealId = path.substr(9);
+	const drinkId = path.substr(8);
 
 	const classes = useStyles();
 
@@ -43,12 +43,12 @@ const Recipe = (props) => {
 	useEffect(() => {
 		axios
 			.get(
-				`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+				`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`
 			)
 			.then((res) => {
-				const { meals } = res.data;
-				setMeals(meals);
-				setMeal(meals[0]);
+				const {drinks} = res.data;
+				setDrinks(drinks);
+				console.log(drinks);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -82,9 +82,9 @@ const Recipe = (props) => {
 	// getting all ingredients
 	const ingredients = [];
 	for (let i = 1; i <= 20; i++) {
-		if (meal[`strIngredient${i}`]) {
+		if (drink[`strIngredient${i}`]) {
 			ingredients.push(
-				`${meal[`strMeasure${i}`]} --- ${meal[`strIngredient${i}`]}`
+				`${drink[`strMeasure${i}`]} --- ${drink[`strIngredient${i}`]}`
 			);
 		} else {
 			break;
@@ -95,9 +95,9 @@ const Recipe = (props) => {
         <>
         {user ? (
 		<Container className={classes.main}>
-			{meals.map((meal) => (
-				<div key={meal.idMeal}>
-					<Typography variant="h4" className={classes.title}>{meal.strMeal}</Typography>
+			{drinks.map((drink) => (
+				<div key={drink.idDrink}>
+					<Typography variant="h4" className={classes.title}>{drink.strdrink}</Typography>
 					<Grid
 						container
 						spacing={3}
@@ -106,25 +106,25 @@ const Recipe = (props) => {
 						<Grid item sm={6} xs={12} className={classes.ingredients}>
 							<Card>
                             <CardHeader
-                                title={`${meal.strArea} ${meal.strCategory}`}
-                                subheader={`Category: ${meal.strCategory}`}
+                                title={`${drink.strTags} ${drink.strCategory}`}
+                                subheader={`Category: ${drink.strCategory}`}
                             />
                             <Typography variant="h5">
 								<ListItem>Ingredients: </ListItem>
                                 </Typography>
-									{ingredients.map((ingredient) => (
+									{/* {ingredients.map((ingredient) => (
 										<ListItem>
                                            {ingredient}
                                         </ListItem>
-									))}
+									))} */}
 							</Card>
 						</Grid>
-						<Grid item sm={6} xs={12} className={classes.meal}>
+						<Grid item sm={6} xs={12} className={classes.drink}>
 							<Card>
 								<CardMedia
 									className={classes.image}
-									image={meal.strMealThumb}
-									title={meal.strMeal}
+									image={drink.strDrinkThumb}
+									title={drink.strDrink}
 								/>
 								<CardActions disableSpacing>
 									<IconButton>
@@ -147,23 +147,13 @@ const Recipe = (props) => {
 											Preparation
 										</Typography>
 										<Typography paragraph>
-											{meal.strInstructions}
+											{drink.strInstructions}
 										</Typography>
 									</CardContent>
 								</Collapse>
 							</Card>
 						</Grid>
 					</Grid>
-					<div className={classes.tutorial}>
-						<Typography variant="h4">Video Tutorial</Typography>
-							<iframe
-								title={`How to prepare ${meal.strMeal}`}
-								width="1000" height="500"
-								src={`https://www.youtube.com/embed/${meal.strYoutube.slice(
-									-11
-								)}`}
-							></iframe>
-					</div>
 				</div>
 			))}           
 		</Container>
@@ -174,4 +164,4 @@ const Recipe = (props) => {
 	);
 };
 
-export default Recipe;
+export default Drink;
