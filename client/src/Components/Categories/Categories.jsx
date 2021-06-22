@@ -82,6 +82,7 @@ const Categories = () => {
 		<>
 		{user ? (
 			<Container>
+				<br /><br /><br /><br />
 				{loading ? (
 				<Container>
 					<Typography variant="h4" className={classes.title}>

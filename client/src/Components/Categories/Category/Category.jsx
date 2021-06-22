@@ -60,6 +60,7 @@ const Category = (props) => {
 		<>
 		{user ? (
 		<Container>
+			<br /><br /><br /><br />
 			<Typography variant="h4" className={classes.title}>
 					Cocktails
 				</Typography>

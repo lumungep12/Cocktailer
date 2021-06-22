@@ -35,7 +35,7 @@ const Navbar = () => {
 	}, [location]);
 
 	return (
-		<AppBar position="static">
+		<AppBar position="fixed">
 			<Toolbar className={styles.toolbar}>
 				<div>
 					<Button component={Link} to="/">
@@ -55,7 +55,7 @@ const Navbar = () => {
                             {user?.result?.name.charAt(0)}
                         </Avatar>
                         <Typography className={styles.username}>
-                            Jambo {user?.result?.name} 
+                            {user?.result?.name} 
                         </Typography>
 						<Button className={styles.logout} onClick={logout}>
                             <Power/>
