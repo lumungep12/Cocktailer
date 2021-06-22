@@ -15,10 +15,11 @@ const Category = (props) => {
 	const path = props.location.pathname;
 	const param = path.substr(11);
 
+	console.log(param);
+
 	const classes = useStyles();
 
-	// get by cayegory
-	useEffect(() => {
+	const getByCategory = () => {
 		axios
 			.get(
 				`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${param}`
@@ -30,6 +31,29 @@ const Category = (props) => {
 			.catch((error) => {
 				console.log(error);
 			});
+	}
+
+	const getByAlcoholic = () => {
+		axios
+			.get(
+				`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${param}`
+			)
+			.then((res) => {
+				const {drinks}= res.data;
+                setDrinks(drinks);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+
+
+	useEffect(() => {
+		if(param.includes('alcohol')){
+			getByAlcoholic();
+		}else{
+			getByCategory();
+		}
 	}, []);
 
 	return (
