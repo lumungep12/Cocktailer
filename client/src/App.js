@@ -3,7 +3,7 @@ import { Container } from "@material-ui/core";
 import About from "./Pages/About/About";
 import Navbar from "./Components/Navbar/Navbar";
 import Category from "./Components/Categories/Category/Category";
-import Drink from "./Pages/Recipe/Drink";
+import Drink from "./Pages/Drink/Drink";
 import Categories from "./Components/Categories/Categories";
 import Home from "./Pages/Home/Home";
 
