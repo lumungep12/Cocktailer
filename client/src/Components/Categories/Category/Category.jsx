@@ -61,7 +61,7 @@ const Category = (props) => {
 								pathname: `/recipe/:${single.idMeal}`,
 							}}
 						>
-							View Recipe
+						Recipe
 						</Button>
 					</CardActions>
 				</Card>
