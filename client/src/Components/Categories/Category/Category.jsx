@@ -7,7 +7,7 @@ import Auth from "../../../Pages/Auth/Auth";
 
 
 const Category = (props) => {
-	const [user, setUser] = useState(
+	const [user] = useState(
 		JSON.parse(localStorage.getItem("profile"))
 	);
     const [drinks, setDrinks] = useState([]);
