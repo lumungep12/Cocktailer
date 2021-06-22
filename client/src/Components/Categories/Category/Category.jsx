@@ -32,27 +32,12 @@ const Category = (props) => {
 			});
 	}, []);
 
-	// get by ingredient
-	useEffect(() => {
-		axios
-			.get(
-				`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${param}`
-			)
-			.then((res) => {
-				const {drinks}= res.data;
-                setDrinks(drinks);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
-
 	return (
 		<>
 		{user ? (
 		<Container>
 			<Typography variant="h4" className={classes.title}>
-					** Recipies
+					Cocktails
 				</Typography>
 			<Grid container spacing={2}>
             {drinks?.map((single) => (

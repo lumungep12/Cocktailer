@@ -1,15 +1,12 @@
 import { makeStyles } from "@material-ui/core";
 
 export default makeStyles(() => ({
-	title: {
-		textAlign: "center",
-		padding: "2rem 0",
+	paper: {
+		padding: "1.5rem",
 	},
-	actions: {
-		display: "flex",
-		justifyContent: "space-between",
-	},
-	image: {
-		height: 250,
+	button: {
+		margin: "10px",
+		textTransform: "capitalize",
+		padding: "5px 10px",
 	},
 }));

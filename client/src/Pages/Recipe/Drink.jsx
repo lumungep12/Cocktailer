@@ -99,7 +99,7 @@ const Drink = (props) => {
 		<Container className={classes.main}>
 			{drinks.map((drink) => (
 				<div key={drink.idDrink}>
-					<Typography variant="h4" className={classes.title}>{drink.strdrink}</Typography>
+					<Typography variant="h4">How to make {drink.strDrink}</Typography>
 					<Grid
 						container
 						spacing={3}

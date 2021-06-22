@@ -19,7 +19,6 @@ const Categories = () => {
 		JSON.parse(localStorage.getItem("profile"))
 	);
 	const [drinks, setDrinks] = useState([]);
-	const [ingredients, setIngredients] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(10);
 	const classes = useStyles();
@@ -33,20 +32,6 @@ const Categories = () => {
 			.then((res) => {
 				const {drinks} = res.data;
 				setDrinks(drinks);
-				setLoading(true);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
-
-	// get all drink by ingredients
-	useEffect(() => {
-		axios
-			.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
-			.then((res) => {
-				const {drinks} = res.data;
-				setIngredients(drinks);
 				setLoading(true);
 			})
 			.catch((error) => {
@@ -87,11 +72,11 @@ const Categories = () => {
 				</Typography>
 				{loading ? (
 				<Container>
-				<Paper elevation={3}>
+				<Paper className={classes.paper} elevation={3}>
 					{drinks?.map((drink) => (
 						<Button
 							variant="contained"
-							color="secondary"
+							className={classes.button}
 							component={Link}
 							to={{
 								pathname: `/category/:${drink.strCategory}`
@@ -101,23 +86,6 @@ const Categories = () => {
 						</Button>
 					))}
 				</Paper>
-				<br />
-				<Typography variant="h3">By Ingredients</Typography>
-				<br />
-				<Paper elevation={3}>
-				{ingredients?.map((drink) => (
-					<Button
-						variant="contained"
-						color="secondary"
-						component={Link}
-						to={{
-							pathname: `/category/:${drink.strIngredient1}`
-						}}
-					>
-						<p>{drink.strIngredient1}</p>
-					</Button>
-				))}
-			</Paper>
 			</Container>
 				) : (
 					<div>

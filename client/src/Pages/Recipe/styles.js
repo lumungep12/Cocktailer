@@ -19,7 +19,7 @@ export default makeStyles(() => ({
 		width: "50%",
 	},
 	image: {
-		height: 510,
+		height: 350,
 	},
 	tutorial: {
 		display: "flex",
