@@ -6,8 +6,6 @@ import useStyles from "./styles";
 // redux
 import { useDispatch } from "react-redux";
 import { signup, signin } from "../../Actions/Auth";
-// google oauth
-import { GoogleLogin } from "react-google-login";
 
 const formInitialState = {
 	firstName: "",
@@ -49,24 +47,6 @@ const Auth = () => {
 
 	const handleShowPassword = () => {
 		setShowPassword(!showPassword);
-	};
-
-	// google authentication
-	const googleSuccess = async (res) => {
-		const result = res?.profileObj;
-		const token = res?.tokenId;
-
-		try {
-			dispatch({ type: "AUTH", data: { result, token } });
-			history.push("/categories");
-			history.go(0)
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	const googleFailure = () => {
-		console.log("Google SignIn Unsuccessful");
 	};
 
 	return (
@@ -127,6 +107,13 @@ const Auth = () => {
 							color="primary"
 						>
 							{isSignUp ? "SignUp" : "SignIn"}
+						</Button>
+						&nbsp;
+						<Button
+							variant="contained"
+							color="default"
+						>
+							Reset
 						</Button>
 					</>
 				</form>
