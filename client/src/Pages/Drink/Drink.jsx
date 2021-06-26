@@ -22,7 +22,7 @@ import useStyles from "./styles";
 import Auth from "../Auth/Auth";
 
 const Drink = (props) => {
-    const [user, setUser] = useState(
+    const [user] = useState(
 		JSON.parse(localStorage.getItem("profile"))
 	);
 	const [drinks, setDrinks] = useState([]);
