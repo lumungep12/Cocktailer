@@ -1,10 +1,12 @@
 import {Container, Typography} from '@material-ui/core';
+import useStyles from './styles';
 
 
 const About = () => {
+    const classes = useStyles();
     return (
-        <Container>
-            <br /><br /><br />
+        <Container >
+            <div className={classes.about}>
             <Typography variant="h3">Need A Drink ?</Typography>
             <Typography variant="paragraph">Welcome to cocktales. This is a web tool that 
             enables you to make your own drinks or cocktails without having to rely on professionals
@@ -13,6 +15,7 @@ const About = () => {
             We have included filters such as alcohilic cocktails, non-alcoholic and more. 
             Hope you enjoy
             </Typography>
+            </div>
         </Container>
     )
 }

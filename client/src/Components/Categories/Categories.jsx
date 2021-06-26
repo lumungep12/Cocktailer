@@ -81,12 +81,8 @@ const Categories = () => {
 	
 	return (
 		<Container>
-			<br />
-			<br />
-			<br />
-			<br />
 			{loading ? (
-				<Container>
+				<Container className={classes.categories}>
 					<Typography variant="h4" className={classes.title}>
 						All Categories
 					</Typography>

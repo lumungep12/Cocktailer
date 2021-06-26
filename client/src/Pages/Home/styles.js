@@ -6,7 +6,7 @@ export default makeStyles(() => ({
 		width: "100%",
 		height: "78vh",
 		background:
-			"url('https://images.pexels.com/photos/5946998/pexels-photo-5946998.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')",
+			"url('https://mcdn.wallpapersafari.com/medium/98/56/8EfrVP.jpg')",
 		backgroundRepeat: "no-repeat",
 		backgroundSize: "cover",
 		backgroundPosition: "center",
