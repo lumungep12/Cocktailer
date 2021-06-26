@@ -16,7 +16,7 @@ const Navbar = () => {
 	const history = useHistory();
 	const location = useLocation();
 
-	const styles = useStyles();
+	const classes = useStyles();
 
 	const logout = () => {
 		dispatch({ type: "LOGOUT" });
@@ -35,30 +35,30 @@ const Navbar = () => {
 	}, [location]);
 
 	return (
-		<AppBar position="fixed">
-			<Toolbar className={styles.toolbar}>
+		<AppBar position="fixed" className={classes.navbar}>
+			<Toolbar className={classes.toolbar}>
 				<div>
-					<Button component={Link} to="/">
+					<Button className={classes.link} component={Link} to="/">
 						Cocktales
 					</Button>
-				<Button component={Link} to="/about">
+				<Button className={classes.link} component={Link} to="/about">
 					About
 				</Button>
-				<Button component={Link} to="/categories">
+				<Button className={classes.link} component={Link} to="/categories">
 					Cocktails
 				</Button>
 				</div>
 				<div>
                 {user ? (
-                    <div className={styles.profile}>
-                        <Avatar className={styles.avatar} alt={user?.result?.name} src={user?.result?.imageUrl}>
+                    <div className={classes.profile}>
+                        <Avatar className={classes.avatar} alt={user?.result?.name} src={user?.result?.imageUrl}>
                             {user?.result?.name.charAt(0)}
                         </Avatar>
-                        <Typography className={styles.username}>
+                        <Typography className={classes.username}>
                             {user?.result?.name} 
                         </Typography>
-						<Button className={styles.logout} onClick={logout}>
-                            <Power/>
+						<Button className={classes.logout} onClick={logout}>
+                            <Power className={classes.logout}/>
 						</Button>
                     </div>
                 ) : null}

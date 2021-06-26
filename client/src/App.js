@@ -7,6 +7,7 @@ import Categories from "./Components/Categories/Categories";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import Footer from "./Components/Footer/Footer";
+import "./App.css";
 
 const App = () => {
 	return (

@@ -1,8 +1,19 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles(() => ({
-	logo: {
-		// paddingRight: "2rem",
+	navbar: {
+		background: "rgba(0,0,0,0.6)",
+	},
+	link: {
+		color: "#fff",
+		fontWeight: "600",
+	},
+	username: {
+		color: "#fff",
+		fontWeight: "600",
+	},
+	avatar: {
+		backgroundColor: "#FA8072",
 	},
 	toolbar: {
 		display: "flex",
@@ -11,6 +22,7 @@ export default makeStyles(() => ({
 	},
 	logout: {
 		color: "red",
+		fontSize: "2rem",
 	},
 	profile: {
 		display: "flex",
