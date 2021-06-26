@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Paper, Button, Typography, Grid } from "@material-ui/core";
+import { Paper, Button, Typography, Grid, Container } from "@material-ui/core";
 import FormInput from "./FormInput";
 import useStyles from "./styles";
 // redux
@@ -70,7 +70,7 @@ const Auth = () => {
 	};
 
 	return (
-		<div>
+		<Container className={styles.container} >
 			<Paper className={styles.paper} elevation={5}>
 				<Typography className={styles.heading} variant="h5">
 					{isSignUp ? "Sign Up Here" : "Sign In"}
@@ -128,24 +128,6 @@ const Auth = () => {
 						>
 							{isSignUp ? "SignUp" : "SignIn"}
 						</Button>
-						<GoogleLogin
-							clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-							render={(renderProps) => (
-								<Button
-									className={styles.google}
-									type="reset"
-									variant="contained"
-									color="secondary"
-									onClick={renderProps.onClick}
-									disabled={renderProps.disabled}
-								>
-									Google SignIn
-								</Button>
-							)}
-							onSuccess={googleSuccess}
-							onFailure={googleFailure}
-							cookiePolicy="single_host_origin"
-						/>
 					</>
 				</form>
 				<Grid container justify="flex-end">
@@ -158,7 +140,7 @@ const Auth = () => {
 					</Grid>
 				</Grid>
 			</Paper>
-		</div>
+		</Container>
 	);
 };
 

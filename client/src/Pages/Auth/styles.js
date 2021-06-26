@@ -4,11 +4,14 @@ export default makeStyles((theme) => ({
 	inputField: {
 		marginBottom: "10px",
 	},
+	container: {
+		height: "75vh",
+	},
 	paper: {
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		marginTop: "2rem",
+		marginTop: "6rem",
 		padding: "1rem",
 	},
 	form: {
