@@ -9,6 +9,7 @@ import {
 	Box,
 	LinearProgress,
 	Paper,
+	Grid,
 } from "@material-ui/core";
 import useStyles from "./styles";
 
@@ -78,28 +79,35 @@ const Categories = () => {
 	};
 
 	if (!user) history.push("/auth");
-	
+
 	return (
 		<Container>
 			{loading ? (
-				<Container className={classes.categories}>
+				<Container className={classes.main}>
 					<Typography variant="h4" className={classes.title}>
 						All Categories
 					</Typography>
-					<Paper className={classes.paper} elevation={3}>
+					<Grid container spacing={3} className={classes.categories}>
 						{drinks?.map((drink) => (
-							<Button
-								variant="contained"
-								className={classes.button}
+							<Grid
+								item
+								className={classes.wrapper}
 								component={Link}
 								to={{
 									pathname: `/category/:${drink.strCategory}`,
 								}}
 							>
-								<p>{drink.strCategory}</p>
-							</Button>
+								<div className={classes.overlay}>
+									<Typography
+										variant="h6"
+										className={classes.text}
+									>
+										{drink.strCategory}
+									</Typography>
+								</div>
+							</Grid>
 						))}
-					</Paper>
+					</Grid>
 					<br />
 					<br />
 					<Typography variant="h4">Other Filters</Typography>
