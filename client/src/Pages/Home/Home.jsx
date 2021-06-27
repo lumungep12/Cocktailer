@@ -11,8 +11,8 @@ const Home = () => {
         <>
         <div className={classes.home}>
             <div className={classes.overlay}>
-                <Typography variant="h1">Be Your Own Mixologist</Typography>
-                <Button variant="contained" component={Link} to="/auth"><Arrow/></Button>
+                <Typography variant="h2">Try out new drinks with free cocktail recipes</Typography>
+                <Button variant="contained" component={Link} to="/categories"><Arrow/></Button>
             </div>
         </div>
         </>
