@@ -23,6 +23,10 @@ export default makeStyles(() => ({
 			transform: "scale(1.1)",
 		},
 	},
+	filter: {
+		backgroundImage:
+			"url('https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YmV2ZXJhZ2VzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60')",
+	},
 	overlay: {
 		position: "absolute",
 		top: 0,
@@ -37,7 +41,7 @@ export default makeStyles(() => ({
 		color: "red",
 	},
 	text: {
-		color: "#f4d03f",
+		color: "#fff",
 		textDecoration: "none",
 		fontWeight: "600",
 	},

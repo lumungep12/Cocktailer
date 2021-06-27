@@ -111,20 +111,27 @@ const Categories = () => {
 					<br />
 					<br />
 					<Typography variant="h4">Other Filters</Typography>
-					<Paper className={classes.paper} elevation={3}>
+					<Grid container spacing={3} className={classes.categories}>
 						{alcoholic?.map((drink) => (
-							<Button
-								variant="contained"
-								className={classes.button}
+							<Grid
+								item
+								className={`${classes.filter} ${classes.wrapper}`}
 								component={Link}
 								to={{
-									pathname: `/category/:${drink.strAlcoholic}`,
+									pathname: `/category/:${drink.strCategory}`,
 								}}
 							>
-								<p>{drink.strAlcoholic}</p>
-							</Button>
+								<div className={classes.overlay}>
+									<Typography
+										variant="h6"
+										className={classes.text}
+									>
+										{drink.strAlcoholic}
+									</Typography>
+								</div>
+							</Grid>
 						))}
-					</Paper>
+					</Grid>
 				</Container>
 			) : (
 				<div>
