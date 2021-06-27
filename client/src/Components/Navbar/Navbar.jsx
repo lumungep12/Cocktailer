@@ -49,7 +49,7 @@ const Navbar = () => {
 			<Toolbar className={classes.toolbar}>
 				<div>
 					<Button className={classes.link} component={Link} to="/">
-						Cocktales
+						Home
 					</Button>
 				<Button className={classes.link} component={Link} to="/about">
 					About

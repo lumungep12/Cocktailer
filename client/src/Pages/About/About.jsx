@@ -7,12 +7,12 @@ const About = () => {
     return (
         <Container >
             <div className={classes.about}>
-            <Typography variant="h3">Need A Drink ?</Typography>
-            <Typography variant="paragraph">Welcome to cocktales. This is a web tool that 
-            enables you to make your own drinks or cocktails without having to rely on professionals
-            Here you get over 500 plus beverages, with images, ingredients and instructions
+            <Typography variant="h2">Need A Drink / Cocktail?</Typography>
+            <Typography variant="h5">This is a web application that 
+            enables you to make your own drinks or cocktails.
+            We offer over 500+ beverages, alcoholic and non-alcoholic with images, ingredients and instructions
             on how to go about preparing the drink.
-            We have included filters such as alcohilic cocktails, non-alcoholic and more. 
+            We have included filters for various preferences for our respective users. 
             Hope you enjoy
             </Typography>
             </div>
