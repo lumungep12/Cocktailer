@@ -10,7 +10,6 @@ import {
 	CardMedia,
 	CardActions,
 	Button,
-	CircularProgress,
 } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Auth from "../../../Pages/Auth/Auth";
@@ -65,6 +64,9 @@ const Category = (props) => {
 		}
 	}, []);
 
+	
+
+
 	return (
 		<>
 			{user ? (
@@ -79,14 +81,26 @@ const Category = (props) => {
 					{loading ? (
 						<Grid container spacing={2}>
 							{dummyDrinks.map((drink) => (
-							<Grid item xs={12} sm={6} md={4}>
-							<Skeleton variant="rect" width={380} height={250} />
-							<div className={classes.cardFooter}>
-								<Skeleton variant="text" width={300} height={60} />
-								&nbsp;
-								<Skeleton variant="text" width={70} height={60} />
-							</div>
-							</Grid>
+								<Grid item xs={12} sm={6} md={4}>
+									<Skeleton
+										variant="rect"
+										width={380}
+										height={250}
+									/>
+									<div className={classes.cardFooter}>
+										<Skeleton
+											variant="text"
+											width={300}
+											height={60}
+										/>
+										&nbsp;
+										<Skeleton
+											variant="text"
+											width={70}
+											height={60}
+										/>
+									</div>
+								</Grid>
 							))}
 						</Grid>
 					) : (
