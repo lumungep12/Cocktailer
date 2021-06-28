@@ -11,9 +11,7 @@ import {
 	IconButton,
 	Collapse,
 	Grid,
-    ListItem,
-    Box, 
-    LinearProgress
+    ListItem
 } from "@material-ui/core";
 import Like from "@material-ui/icons/Favorite";
 import Share from "@material-ui/icons/Share";
@@ -28,7 +26,6 @@ const Drink = (props) => {
 	const [drinks, setDrinks] = useState([]);
 	const [drink, setdrink] = useState([]);
     const [loading, setLoading] = useState(false);
-	const [progress, setProgress] = useState(10);
 	const [expanded, setExpanded] = useState(false);
 
 	const path = props.location.pathname;
@@ -50,36 +47,13 @@ const Drink = (props) => {
 				setDrinks(drinks);
 				setdrink(drinks[0]);
 				setLoading(!loading);
-				// console.log(drinks);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}, []);
 
-    useEffect(() => {
-		const timer = setInterval(() => {
-			setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10))
-		}, 800);
-		return () => {
-			clearInterval(timer);
-		}
-	}, []);
-
-	const LinearProgressWithLabel = (props) => {
-		return(
-			<Box display="flex" alignItems="center">
-				<Box width="100%" mr={1}>
-					<LinearProgress variant="determinate" {...props}/>
-					</Box>
-					<Box minWidth={35}>
-						<Typography variant="body2" color="textSecondary">
-							{`${Math.round(props.value)}%`}
-						</Typography>
-					</Box>
-			</Box>
-		)
-	}
+   
 
 	// getting all ingredients
 	const ingredients = [];

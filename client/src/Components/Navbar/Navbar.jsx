@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { AppBar, Avatar, Button, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import Power from '@material-ui/icons/PowerSettingsNewRounded';
 import useStyles from "./styles";
 // redux
@@ -11,7 +11,6 @@ const Navbar = () => {
 	const [user, setUser] = useState(
 		JSON.parse(localStorage.getItem("profile"))
 	);
-	const [anchorEl, setAnchorEl] = useState(null);
 
 
 	const dispatch = useDispatch();
@@ -20,13 +19,6 @@ const Navbar = () => {
 	
 	// styling
 	const classes = useStyles();
-
-	const handleClick = (e) => {
-		setAnchorEl(e.currentTarget);
-	}
-	const handleClose = () => {
-		setAnchorEl(null);
-	  };
 
 	const logout = () => {
 		dispatch({ type: "LOGOUT" });
