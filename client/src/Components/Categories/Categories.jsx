@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import {
 	Typography,
 	Container,
-	Box,
-	LinearProgress,
+	CircularProgress,
 	Grid,
 } from "@material-ui/core";
 import {useQuery} from 'react-query';
@@ -14,8 +13,6 @@ import useStyles from "./styles";
 
 const Categories = () => {
 	const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-	const [loading, setLoading] = useState(false);
-	const [progress, setProgress] = useState(10);
 	const history = useHistory();
 	// styling
 	const classes = useStyles();
@@ -32,34 +29,6 @@ const Categories = () => {
 		  {isLoading: loadingFilters, data: filters}
 	  ] = GetData();
 
-	//  console.log(filters.data.drinks);
-
-	useEffect(() => {
-		const timer = setInterval(() => {
-			setProgress((prevProgress) =>
-				prevProgress >= 100 ? 10 : prevProgress + 10
-			);
-		}, 800);
-		return () => {
-			clearInterval(timer);
-		};
-	}, []);
-
-	const LinearProgressWithLabel = (props) => {
-		return (
-			<Box display="flex" alignItems="center">
-				<Box width="100%" mr={1}>
-					<LinearProgress variant="determinate" {...props} />
-				</Box>
-				<Box minWidth={35}>
-					<Typography variant="body2" color="textSecondary">
-						{`${Math.round(props.value)}%`}
-					</Typography>
-				</Box>
-			</Box>
-		);
-	};
-
 	if (!user) history.push("/auth");
 
 	return (
@@ -68,7 +37,7 @@ const Categories = () => {
 					<Typography variant="h4" className={classes.title}>
 						All Categories
 					</Typography>
-					{loadingCategories ? (<h1>Loading Categories....</h1>) : (
+					{loadingCategories ? (<div><CircularProgress /></div>) : (
 					<Grid container spacing={3} className={classes.categories}>
 						{categories.data.drinks?.map((drink) => (
 							<Grid
@@ -94,7 +63,7 @@ const Categories = () => {
 					<br />
 					<br />
 					<Typography variant="h4">Other Filters</Typography>
-					{loadingFilters ? (<h1>Loading Filters...</h1>) : (
+					{loadingFilters ? (<div><CircularProgress /></div>) : (
 					<Grid container spacing={3} className={classes.categories}>
 						{filters.data.drinks?.map((drink) => (
 							<Grid
