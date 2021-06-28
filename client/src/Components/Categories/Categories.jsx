@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import {
 	CircularProgress,
 	Grid,
 } from "@material-ui/core";
-import {useQuery} from 'react-query';
+import { useQuery } from "react-query";
 import useStyles from "./styles";
 
 const Categories = () => {
@@ -19,25 +19,33 @@ const Categories = () => {
 
 	// fetch data
 	const GetData = () => {
-		const categories = useQuery("categories", () => axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'));
-		const filters = useQuery("filters", () => axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list'));
+		const categories = useQuery("categories", () =>
+			axios("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
+		);
+		const filters = useQuery("filters", () =>
+			axios("https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list")
+		);
 		return [categories, filters];
-	  }
-	
-	  const [
-		  {isLoading: loadingCategories, data: categories},
-		  {isLoading: loadingFilters, data: filters}
-	  ] = GetData();
+	};
+
+	const [
+		{ isLoading: loadingCategories, data: categories },
+		{ isLoading: loadingFilters, data: filters },
+	] = GetData();
 
 	if (!user) history.push("/auth");
 
 	return (
 		<Container>
-				<Container className={classes.main}>
-					<Typography variant="h4" className={classes.title}>
-						All Categories
-					</Typography>
-					{loadingCategories ? (<div><CircularProgress /></div>) : (
+			<Container className={classes.main}>
+				<Typography variant="h4" className={classes.title}>
+					All Categories
+				</Typography>
+				{loadingCategories ? (
+					<div>
+						<CircularProgress />
+					</div>
+				) : (
 					<Grid container spacing={3} className={classes.categories}>
 						{categories.data.drinks?.map((drink) => (
 							<Grid
@@ -59,11 +67,15 @@ const Categories = () => {
 							</Grid>
 						))}
 					</Grid>
-					)}
-					<br />
-					<br />
-					<Typography variant="h4">Other Filters</Typography>
-					{loadingFilters ? (<div><CircularProgress /></div>) : (
+				)}
+				<br />
+				<br />
+				<Typography variant="h4">Other Filters</Typography>
+				{loadingFilters ? (
+					<div>
+						<CircularProgress />
+					</div>
+				) : (
 					<Grid container spacing={3} className={classes.categories}>
 						{filters.data.drinks?.map((drink) => (
 							<Grid
@@ -85,8 +97,8 @@ const Categories = () => {
 							</Grid>
 						))}
 					</Grid>
-					)}
-				</Container>
+				)}
+			</Container>
 		</Container>
 	);
 };
