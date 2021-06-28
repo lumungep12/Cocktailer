@@ -5,12 +5,16 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import reducers from "./Reducers";
 import { applyMiddleware, compose, createStore } from "redux";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
+const queryClient = new QueryClient();
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+	<QueryClientProvider client={queryClient}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</QueryClientProvider>,
 	document.getElementById("root")
 );

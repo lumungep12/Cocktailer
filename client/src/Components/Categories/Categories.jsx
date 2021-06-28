@@ -3,54 +3,37 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {
-	Button,
 	Typography,
 	Container,
 	Box,
 	LinearProgress,
-	Paper,
 	Grid,
 } from "@material-ui/core";
+import {useQuery} from 'react-query';
 import useStyles from "./styles";
 
 const Categories = () => {
 	const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-	const [drinks, setDrinks] = useState([]);
-	const [alcoholic, setAlcoholic] = useState([]);
+	// const [alcoholic, setAlcoholic] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(10);
-
 	const history = useHistory();
-
 	// styling
 	const classes = useStyles();
 
-	// get all drink by categories
-	useEffect(() => {
-		axios
-			.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
-			.then((res) => {
-				const { drinks } = res.data;
-				setDrinks(drinks);
-				setLoading(true);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+	const GetData = () => {
+		const categories = useQuery("categories", () => axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'));
+		const filters = useQuery("filters", () => axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list'));
+		return [categories, filters];
+	  }
+	
+	  const [
+		  {isLoading: loadingCategories, data: categories},
+		  {isLoading: loadingFilters, data: filters}
+	  ] = GetData();
 
-	useEffect(() => {
-		axios
-			.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list")
-			.then((res) => {
-				const { drinks } = res.data;
-				setAlcoholic(drinks);
-				setLoading(true);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+	  const {drinks} = categories.data;
+	  const drinks2 = filters.data.drinks;
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -82,7 +65,6 @@ const Categories = () => {
 
 	return (
 		<Container>
-			{loading ? (
 				<Container className={classes.main}>
 					<Typography variant="h4" className={classes.title}>
 						All Categories
@@ -112,13 +94,13 @@ const Categories = () => {
 					<br />
 					<Typography variant="h4">Other Filters</Typography>
 					<Grid container spacing={3} className={classes.categories}>
-						{alcoholic?.map((drink) => (
+						{drinks2?.map((drink) => (
 							<Grid
 								item
 								className={`${classes.filter} ${classes.wrapper}`}
 								component={Link}
 								to={{
-									pathname: `/category/:${drink.strCategory}`,
+									pathname: `/category/:${drink.strAlcoholic}`,
 								}}
 							>
 								<div className={classes.overlay}>
@@ -133,13 +115,6 @@ const Categories = () => {
 						))}
 					</Grid>
 				</Container>
-			) : (
-				<div>
-					<br />
-					<br />
-					<LinearProgressWithLabel value={progress} />
-				</div>
-			)}
 		</Container>
 	);
 };

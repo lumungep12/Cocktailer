@@ -9,7 +9,7 @@ import Auth from "./Pages/Auth/Auth";
 import Footer from "./Components/Footer/Footer";
 import "./App.css";
 
-const App = () => {
+export default function App() {
 	return (
 		<BrowserRouter>
 			<Navbar />
@@ -24,6 +24,4 @@ const App = () => {
 			<Footer />
 		</BrowserRouter>
 	);
-};
-
-export default App;
+}
