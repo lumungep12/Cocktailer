@@ -1,9 +1,9 @@
 import {useState, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import {Container, Grid, Typography, Card, CardActionArea, CardMedia, CardActions, Button } from '@material-ui/core';
-import useStyles from './styles';
+import {Container, Grid, Typography, Card, CardActionArea, CardMedia, CardActions, Button, CircularProgress} from '@material-ui/core';
 import Auth from "../../../Pages/Auth/Auth";
+import useStyles from './styles';
 
 
 const Category = (props) => {
@@ -11,11 +11,10 @@ const Category = (props) => {
 		JSON.parse(localStorage.getItem("profile"))
 	);
     const [drinks, setDrinks] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const path = props.location.pathname;
 	const param = path.substr(11);
-
-	console.log(param);
 
 	const classes = useStyles();
 
@@ -27,6 +26,7 @@ const Category = (props) => {
 			.then((res) => {
 				const {drinks}= res.data;
                 setDrinks(drinks);
+				setLoading(!loading);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -41,7 +41,7 @@ const Category = (props) => {
 			.then((res) => {
 				const {drinks}= res.data;
                 setDrinks(drinks);
-				console.log(drinks);
+				setLoading(!loading);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -65,6 +65,7 @@ const Category = (props) => {
 			<Typography variant="h4" className={classes.title}>
 					Cocktails
 				</Typography>
+			{loading ? (<div className={classes.progress}><CircularProgress/></div>) : (
 			<Grid container spacing={2}>
             {drinks?.map((single) => (
 				<Grid item xs={12} sm={6} md={4}>
@@ -95,6 +96,7 @@ const Category = (props) => {
 			</Grid>
             ))}
 			</Grid>
+			)}
 		</Container>
 		) : (
 			<Auth/>

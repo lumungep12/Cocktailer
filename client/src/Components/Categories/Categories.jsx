@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useQuery } from "react-query";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,7 +9,6 @@ import {
 	CircularProgress,
 	Grid,
 } from "@material-ui/core";
-import { useQuery } from "react-query";
 import useStyles from "./styles";
 
 const Categories = () => {
