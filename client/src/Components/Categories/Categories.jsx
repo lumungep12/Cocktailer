@@ -14,13 +14,13 @@ import useStyles from "./styles";
 
 const Categories = () => {
 	const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-	// const [alcoholic, setAlcoholic] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [progress, setProgress] = useState(10);
 	const history = useHistory();
 	// styling
 	const classes = useStyles();
 
+	// fetch data
 	const GetData = () => {
 		const categories = useQuery("categories", () => axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'));
 		const filters = useQuery("filters", () => axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list'));
@@ -32,8 +32,7 @@ const Categories = () => {
 		  {isLoading: loadingFilters, data: filters}
 	  ] = GetData();
 
-	  const {drinks} = categories.data;
-	  const drinks2 = filters.data.drinks;
+	//  console.log(filters.data.drinks);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -69,8 +68,9 @@ const Categories = () => {
 					<Typography variant="h4" className={classes.title}>
 						All Categories
 					</Typography>
+					{loadingCategories ? (<h1>Loading Categories....</h1>) : (
 					<Grid container spacing={3} className={classes.categories}>
-						{drinks?.map((drink) => (
+						{categories.data.drinks?.map((drink) => (
 							<Grid
 								item
 								className={classes.wrapper}
@@ -90,11 +90,13 @@ const Categories = () => {
 							</Grid>
 						))}
 					</Grid>
+					)}
 					<br />
 					<br />
 					<Typography variant="h4">Other Filters</Typography>
+					{loadingFilters ? (<h1>Loading Filters...</h1>) : (
 					<Grid container spacing={3} className={classes.categories}>
-						{drinks2?.map((drink) => (
+						{filters.data.drinks?.map((drink) => (
 							<Grid
 								item
 								className={`${classes.filter} ${classes.wrapper}`}
@@ -114,6 +116,7 @@ const Categories = () => {
 							</Grid>
 						))}
 					</Grid>
+					)}
 				</Container>
 		</Container>
 	);

@@ -41,6 +41,7 @@ const Category = (props) => {
 			.then((res) => {
 				const {drinks}= res.data;
                 setDrinks(drinks);
+				console.log(drinks);
 			})
 			.catch((error) => {
 				console.log(error);
