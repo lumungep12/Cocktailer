@@ -13,10 +13,13 @@ export default makeStyles((theme) => ({
 		alignItems: "center",
 		marginTop: "6rem",
 		padding: "1rem",
+		background: "rgba(0,0,0,0.7)",
+		color: "#fff",
 	},
 	form: {
 		width: "70%",
 		marginTop: "2rem",
+		color: "#fff",
 	},
 	heading: {
 		paddingTop: "1rem",
