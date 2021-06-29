@@ -20,6 +20,7 @@ export default makeStyles((theme) => ({
 	},
 	heading: {
 		paddingTop: "1rem",
+		textTransform: "capitalize",
 	},
 	google: {
 		marginLeft: "1rem",

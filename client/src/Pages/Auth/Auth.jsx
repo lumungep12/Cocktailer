@@ -53,7 +53,7 @@ const Auth = () => {
 		<Container className={styles.container} >
 			<Paper className={styles.paper} elevation={5}>
 				<Typography className={styles.heading} variant="h5">
-					{isSignUp ? "Sign Up Here" : "Sign In"}
+					{isSignUp ? "Create a new account here" : "enter your details to sign in"}
 				</Typography>
 				<form
 					className={styles.form}
