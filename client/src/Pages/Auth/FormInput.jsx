@@ -40,13 +40,3 @@ const FormInputs = ({halfScreens, name, type, handleChange, label, autoFocus, ha
 }
 
 export default FormInputs;
-
-// InputProps={name === 'password' ? {
-//     endAdornment : (
-//         <InputAdornment position="end">
-//             <IconButton onClick={handleShowPassword}>
-//                 {type === 'password' ? <Visibility/> : <VisibilityOff/>}
-//             </IconButton>
-//         </InputAdornment>
-//     ),
-// } : null}
