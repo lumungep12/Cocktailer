@@ -2,14 +2,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles(() => ({
 	home: {
-		marginTop: "5rem",
-		width: "100%",
-		height: "78vh",
-		background:
-			"url('https://mcdn.wallpapersafari.com/medium/98/56/8EfrVP.jpg')",
+		backgroundImage:
+			"url('https://mcdn.wallpapersafari.com/medium/76/75/0FBlqY.jpg')",
 		backgroundRepeat: "no-repeat",
 		backgroundSize: "cover",
 		backgroundPosition: "center",
+		width: "100%",
+		height: "85vh",
 	},
 	overlay: {
 		position: "relative",
