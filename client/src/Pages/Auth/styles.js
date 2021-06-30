@@ -10,12 +10,18 @@ export default makeStyles((theme) => ({
 		fontSize: "1.3rem",
 	},
 	container: {
-		height: "75vh",
-		"@media (max-width: 780px)": {
+		height: "72vh",
+		"@media (max-width: 768px)": {
 			marginBottom: "4rem",
 		},
-		"@media (max-width: 400px)": {
-			marginBottom: "10rem",
+		"@media (max-width: 598px)": {
+			marginBottom: "7rem",
+		},
+		"@media (max-width: 370px)": {
+			marginBottom: "14rem",
+		},
+		"@media (max-width: 398px)": {
+			marginBottom: "14rem",
 		},
 	},
 	paper: {

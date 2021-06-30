@@ -4,4 +4,7 @@ export default makeStyles(() => ({
 	footer: {
 		textAlign: "center",
 	},
+	footerDetails: {
+		paddingTop: "1rem",
+	},
 }));
