@@ -4,6 +4,11 @@ export default makeStyles((theme) => ({
 	inputField: {
 		marginBottom: "10px",
 	},
+	input: {
+		color: "#fff",
+		letterSpacing: "2px",
+		fontSize: "1.3rem",
+	},
 	container: {
 		height: "75vh",
 	},
@@ -19,13 +24,9 @@ export default makeStyles((theme) => ({
 	form: {
 		width: "70%",
 		marginTop: "2rem",
-		color: "#fff",
 	},
 	heading: {
 		paddingTop: "1rem",
 		textTransform: "capitalize",
-	},
-	google: {
-		marginLeft: "1rem",
 	},
 }));

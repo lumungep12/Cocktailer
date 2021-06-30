@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Paper, Button, Typography, Grid, Container } from "@material-ui/core";
+import { Paper, Button, Typography, Grid, Container, InputAdornment, IconButton } from "@material-ui/core";
 import FormInput from "./FormInput";
 import useStyles from "./styles";
 // redux
@@ -24,7 +24,7 @@ const Auth = () => {
 	const history = useHistory();
 
 	// styles
-	const styles = useStyles();
+	const classes = useStyles();
 
 	const switcher = () => {
 		setIsSignUp(!isSignUp);
@@ -50,13 +50,13 @@ const Auth = () => {
 	};
 
 	return (
-		<Container className={styles.container} >
-			<Paper className={styles.paper} elevation={5}>
-				<Typography className={styles.heading} variant="h5">
+		<Container className={classes.container} >
+			<Paper className={classes.paper} elevation={5}>
+				<Typography className={classes.heading} variant="h5">
 					{isSignUp ? "Create a new account here" : "enter your details to sign in"}
 				</Typography>
 				<form
-					className={styles.form}
+					className={classes.form}
 					autoComplete="off"
 					onSubmit={handleSubmit}
 				>
