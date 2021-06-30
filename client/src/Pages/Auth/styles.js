@@ -12,7 +12,10 @@ export default makeStyles((theme) => ({
 	container: {
 		height: "75vh",
 		"@media (max-width: 780px)": {
-			marginBottom: "5rem",
+			marginBottom: "4rem",
+		},
+		"@media (max-width: 400px)": {
+			marginBottom: "10rem",
 		},
 	},
 	paper: {
@@ -31,5 +34,21 @@ export default makeStyles((theme) => ({
 	heading: {
 		paddingTop: "1rem",
 		textTransform: "capitalize",
+	},
+	actions: {
+		"@media (max-width: 400px)": {
+			display: "flex",
+			flexDirection: "column",
+			marginBottom: "1rem",
+		},
+	},
+	accountCta: {
+		"@media (max-width: 780px)": {
+			marginTop: "1rem",
+		},
+		"@media (max-width: 400px)": {
+			display: "flex",
+			justifyContent: "center",
+		},
 	},
 }));

@@ -100,7 +100,7 @@ const Auth = () => {
 							/>
 						)}
 					</Grid>
-					<>
+					<div className={classes.actions}>
 						<Button
 							type="submit"
 							variant="contained"
@@ -115,9 +115,9 @@ const Auth = () => {
 						>
 							Reset
 						</Button>
-					</>
+					</div>
 				</form>
-				<Grid container justify="flex-end">
+				<Grid container className={classes.accountCta} justify="flex-end">
 					<Grid item>
 						<Button variant="contained" onClick={switcher}>
 							{isSignUp
