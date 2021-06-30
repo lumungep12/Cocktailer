@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
       </BottomNavigation>
       <div className={classes.footerDetails}>
-          <Typography>All rights reserved @2021 lumunge</Typography>
+          <Typography>created by <a href="https://github.com/lumungep12">lumunge</a></Typography>
       </div>
       </div>
     )

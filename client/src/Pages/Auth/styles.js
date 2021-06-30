@@ -11,6 +11,9 @@ export default makeStyles((theme) => ({
 	},
 	container: {
 		height: "75vh",
+		"@media (max-width: 780px)": {
+			marginBottom: "5rem",
+		},
 	},
 	paper: {
 		display: "flex",
