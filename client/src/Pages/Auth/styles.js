@@ -34,6 +34,7 @@ export default makeStyles((theme) => ({
 	heading: {
 		paddingTop: "1rem",
 		textTransform: "capitalize",
+		textAlign: "center",
 	},
 	actions: {
 		"@media (max-width: 400px)": {
