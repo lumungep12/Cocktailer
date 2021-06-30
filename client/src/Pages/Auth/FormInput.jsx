@@ -2,17 +2,13 @@ import {TextField, Grid, InputAdornment, IconButton} from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import useStyles from './styles';
-import {createMuiTheme, makeStyles} from '@material-ui/core/styles';
-import { orange } from '@material-ui/core/colors';
 
-const FormInputs = ({halfScreens, name, type, handleChange, label, autoFocus, handleShowPassword}) => {
-
+const FormInputs = ({half, name, type, handleChange, label, autoFocus, handleShowPassword}) => {
 
     const classes = useStyles();
  
-
     return(
-        <Grid xs={12} sm={halfScreens ? 6 : 12}>
+        <Grid xs={12} sm={half ? 6 : 12}>
             <TextField
                 className={classes.inputField}
                 name={name}

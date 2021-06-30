@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Paper, Button, Typography, Grid, Container, InputAdornment, IconButton } from "@material-ui/core";
+import { Paper, Button, Typography, Grid, Container} from "@material-ui/core";
 import FormInput from "./FormInput";
 import useStyles from "./styles";
 // redux
@@ -67,13 +67,13 @@ const Auth = () => {
 									label="First Name"
 									name="firstName"
 									autoFocus
-									halfScreens
+									half
 									handleChange={handleChange}
 								/>
 								<FormInput
 									label="Last Name"
 									name="lastName"
-									halfScreens
+									half
 									handleChange={handleChange}
 								/>
 							</>
