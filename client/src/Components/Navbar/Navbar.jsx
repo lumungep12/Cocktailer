@@ -56,6 +56,7 @@ const Navbar = () => {
                         <Avatar className={classes.avatar} alt={user?.result?.name} src={user?.result?.imageUrl}>
                             {user?.result?.name.charAt(0)}
                         </Avatar>
+						&nbsp;
                         <Typography className={classes.username}>
                             {user?.result?.name} 
                         </Typography>
