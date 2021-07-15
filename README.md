@@ -29,9 +29,8 @@ authorization.
 
 ### FEATURES
 
-    * Real time on page recipe searching
-    * Get Recipe Information (name, country of origin, image, method of preparation video tutorial)
-    * Google Authentication
+    * Get Cocktail Information (name, country of origin, image, method of preparation video tutorial)
+    * JWT Token Authentication
     * Mobile Responsive
 
 ### PROJECT SCREENSHOTS
@@ -42,6 +41,6 @@ Coming Soon...
 
 ### SETUP
 
-    * git clone https://github.com/lumungep12/Cocktailer.git
+    * git clone https://github.com/lumunge/Cocktailer.git
     * npm i
     * npm start
