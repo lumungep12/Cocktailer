@@ -7,4 +7,7 @@ export default makeStyles(() => ({
 	footerDetails: {
 		paddingTop: "1rem",
 	},
+	nav: {
+		backgroundColor: "transparent",
+	},
 }));
