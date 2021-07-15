@@ -1,5 +1,11 @@
 ### Cocktails App
 
+## TODOS
+
+-   Responsive design
+-   Form validation
+-   Handling internet disconnections
+
 ### ABOUT
 
 A Web application made with react js for the front end, redux for state
