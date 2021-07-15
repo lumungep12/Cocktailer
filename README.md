@@ -57,6 +57,10 @@ authorization.
 
     ![Screenshot_20210715_133615](https://user-images.githubusercontent.com/58906058/125778175-cbf90351-c9fc-4552-b499-e774f84880e3.png)
 
+-   Drink Details
+
+    ![Screenshot_20210715_133615](https://user-images.githubusercontent.com/58906058/125778175-cbf90351-c9fc-4552-b499-e774f84880e3.png)
+
 ### TRY IT YOURSELF
 
 Coming Soon...
