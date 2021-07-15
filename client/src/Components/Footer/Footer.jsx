@@ -9,7 +9,6 @@ const Footer = () => {
     const classes = useStyles();
 
     return(
-        <div className={classes.footer}>
         <BottomNavigation className={classes.nav} >
         <div className={classes.socials}>
             <a href="https://github.com/lumunge" rel="noreferrer" target="_blank"><BottomNavigationAction icon={<GitHubIcon />} /></a>
@@ -17,7 +16,6 @@ const Footer = () => {
             <a href="#!" onClick={() => alert("lumungep12@gmail.com")}><BottomNavigationAction icon={<MailIcon />} /></a>
         </div>
       </BottomNavigation>
-      </div>
     )
 }
 

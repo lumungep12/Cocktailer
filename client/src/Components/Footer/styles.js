@@ -1,13 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles(() => ({
-	footer: {
-		textAlign: "center",
-	},
-	footerDetails: {
-		paddingTop: "1rem",
-	},
 	nav: {
 		backgroundColor: "transparent",
+		padding: "4rem 0 6rem 0",
+		textAlign: "center",
 	},
 }));
