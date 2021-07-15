@@ -29,7 +29,7 @@ authorization.
 
 ### FEATURES
 
-    * Get Cocktail Information (name, country of origin, image, method of preparation video tutorial)
+    * Get Cocktail Information (name, image, method of preparation)
     * JWT Token Authentication
     * Mobile Responsive
 
