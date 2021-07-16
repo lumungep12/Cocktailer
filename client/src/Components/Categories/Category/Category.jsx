@@ -62,6 +62,7 @@ const Category = (props) => {
 		} else {
 			getByCategory();
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	

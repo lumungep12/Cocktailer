@@ -5,7 +5,7 @@ import FormInput from "./FormInput";
 import useStyles from "./styles";
 // redux
 import { useDispatch } from "react-redux";
-import { signup, signin } from "../../Actions/Auth";
+import { signup, signin, authError } from "../../Actions/Auth";
 
 const formInitialState = {
 	firstName: "",
@@ -36,13 +36,21 @@ const Auth = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (isSignUp) {
+		if(isSignUp){
 			dispatch(signup(formData, history));
-		} else {
+		}else if(isSignIn){
 			dispatch(signin(formData, history));
 			history.push("/categories");
+		}else{
+			dispatch(authError())
 		}
-		console.log(formData);
+		// if (isSignUp) {
+		// 	dispatch(signup(formData, history));
+		// } else {
+		// 	dispatch(signin(formData, history));
+		// 	history.push("/categories");
+		// }
+		
 	};
 
 	const handleShowPassword = () => {

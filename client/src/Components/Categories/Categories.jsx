@@ -33,7 +33,7 @@ const Categories = () => {
 		{ isLoading: loadingFilters, data: filters },
 	] = GetData();
 
-	if (!user) history.push("/auth");
+	if (!user) history.push("/login&signup");
 
 	return (
 		<Container>

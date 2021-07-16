@@ -15,7 +15,7 @@ export default function App() {
 			<Navbar />
 			<Switch>
 				<Route path="/" exact component={Home} />
-				<Route path="/auth" component={Auth} />
+				<Route path="/login&signup" component={Auth} />
 				<Route path="/about" component={About} />
 				<Route path="/categories" component={Categories} />
 				<Route path="/category" component={Category} />
