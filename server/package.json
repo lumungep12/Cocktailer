@@ -1,5 +1,5 @@
 {
-	"name": "cocktails-server",
+	"name": "cocktails_server",
 	"version": "1.0.0",
 	"description": "backend authentication server for cocktail app",
 	"main": "index.js",
