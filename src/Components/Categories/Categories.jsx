@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { useQuery } from "react-query";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {
@@ -12,8 +10,6 @@ import {
 import useStyles from "./styles";
 
 const Categories = () => {
-	const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-	const history = useHistory();
 	// styling
 	const classes = useStyles();
 
@@ -32,8 +28,6 @@ const Categories = () => {
 		{ isLoading: loadingCategories, data: categories },
 		{ isLoading: loadingFilters, data: filters },
 	] = GetData();
-
-	if (!user) history.push("/login&signup");
 
 	return (
 		<Container>
