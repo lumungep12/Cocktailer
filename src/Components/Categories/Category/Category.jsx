@@ -12,11 +12,9 @@ import {
 	Button,
 } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
-import Auth from "../../../Pages/Auth/Auth";
 import useStyles from "./styles";
 
 const Category = (props) => {
-	const [user] = useState(JSON.parse(localStorage.getItem("profile")));
 	const [drinks, setDrinks] = useState([]);
 	const dummyDrinks = new Array(12).fill(0);
 	const [loading, setLoading] = useState(true);
@@ -65,83 +63,74 @@ const Category = (props) => {
 		// eslint-disable-next-line
 	}, []);
 
-	
-
-
 	return (
 		<>
-			{user ? (
-				<Container>
-					<br />
-					<br />
-					<br />
-					<br />
-					<Typography variant="h4" className={classes.title}>
-						Cocktails
-					</Typography>
-					{loading ? (
-						<Grid container spacing={2}>
-							{dummyDrinks.map((drink) => (
-								<Grid item xs={12} sm={6} md={4}>
+			<Container>
+				<br />
+				<br />
+				<br />
+				<br />
+				<Typography variant="h4" className={classes.title}>
+					Cocktails
+				</Typography>
+				{loading ? (
+					<Grid container spacing={2}>
+						{dummyDrinks.map((drink) => (
+							<Grid item xs={12} sm={6} md={4}>
+								<Skeleton
+									variant="rect"
+									width={380}
+									height={250}
+								/>
+								<div className={classes.cardFooter}>
 									<Skeleton
-										variant="rect"
-										width={380}
-										height={250}
+										variant="text"
+										width={300}
+										height={60}
 									/>
-									<div className={classes.cardFooter}>
-										<Skeleton
-											variant="text"
-											width={300}
-											height={60}
+									&nbsp;
+									<Skeleton
+										variant="text"
+										width={70}
+										height={60}
+									/>
+								</div>
+							</Grid>
+						))}
+					</Grid>
+				) : (
+					<Grid container spacing={2}>
+						{drinks?.map((single) => (
+							<Grid item xs={12} sm={6} md={4}>
+								<Card key={single.idMeal}>
+									<CardActionArea>
+										<CardMedia
+											className={classes.image}
+											image={single.strDrinkThumb}
+											title={single.strDrink}
 										/>
-										&nbsp;
-										<Skeleton
-											variant="text"
-											width={70}
-											height={60}
-										/>
-									</div>
-								</Grid>
-							))}
-						</Grid>
-					) : (
-						<Grid container spacing={2}>
-							{drinks?.map((single) => (
-								<Grid item xs={12} sm={6} md={4}>
-									<Card key={single.idMeal}>
-										<CardActionArea>
-											<CardMedia
-												className={classes.image}
-												image={single.strDrinkThumb}
-												title={single.strDrink}
-											/>
-										</CardActionArea>
-										<CardActions
-											className={classes.actions}
+									</CardActionArea>
+									<CardActions className={classes.actions}>
+										<Typography variant="h6">
+											{single.strDrink}
+										</Typography>
+										<Button
+											variant="contained"
+											color="secondary"
+											component={Link}
+											to={{
+												pathname: `/drink/:${single.idDrink}`,
+											}}
 										>
-											<Typography variant="h6">
-												{single.strDrink}
-											</Typography>
-											<Button
-												variant="contained"
-												color="secondary"
-												component={Link}
-												to={{
-													pathname: `/drink/:${single.idDrink}`,
-												}}
-											>
-												How To
-											</Button>
-										</CardActions>
-									</Card>
-								</Grid>
-							))}
-						</Grid>
-					)}
-				</Container>
-			) : (
-				<Auth />
-			)}
+											How To
+										</Button>
+									</CardActions>
+								</Card>
+							</Grid>
+						))}
+					</Grid>
+				)}
+			</Container>
 		</>
 	);
 };
