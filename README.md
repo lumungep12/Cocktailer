@@ -55,10 +55,10 @@ authorization.
 
 ### TRY IT YOURSELF
 
-Coming Soon...
+[Cocktailer](https://elated-volhard-88e9b3.netlify.app/)
 
 ### SETUP
 
     * git clone https://github.com/lumunge/Cocktailer.git
-    * npm i
-    * npm start
+    * yarn i
+    * yarn start
