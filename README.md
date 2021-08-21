@@ -23,20 +23,12 @@ authorization.
     * CSS3
     * Material ui/materual ui icons/material ui skeleton
     * Reactjs
-    * Redux
-    * React-Redux
     * React-Query
     * Axios
-    * bcryptjs
-    * body-parser
-    * cors
-    * express
-    * mongodb and mongoose
 
 ### FEATURES
 
     * Get Cocktail Information (name, image, method of preparation)
-    * JWT Token Authentication
     * Mobile Responsive
 
 ### PROJECT SCREENSHOTS
